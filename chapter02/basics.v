@@ -1,3 +1,5 @@
+Require Import Utf8.
+
 (* Booleans *)
 
 Inductive bool : Type := 
@@ -85,4 +87,27 @@ Proof. reflexivity. Qed.
 Example test_blt_nat2: (blt_nat 2 4) = true.Proof. reflexivity. Qed.
 Example test_blt_nat3: (blt_nat 4 2) = false.Proof. reflexivity. Qed.
 
+(* Natural theorems *)
+
+Theorem plus_1_l: ∀ n: nat,
+  1 + n = S n.
+Proof.  intros n.
+  reflexivity.
+  Qed.
+Theorem mult_0_l: ∀ n: nat,
+  0 * n = 0.
+Proof.  intros n.
+  reflexivity.
+  Qed.
+
+(* Notations *)
+
+Notation "x + y" := (plus x y)  (at level 50, left associativity)
+  : nat_scope.
+Notation "x - y" := (minus x y)  (at level 50, left associativity)
+  : nat_scope.
+Notation "x * y" := (mult x y)  (at level 40, left associativity) 
+  : nat_scope.
+
+Check ((0 + 1) + 1).
 
